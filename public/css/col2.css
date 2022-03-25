@@ -1,0 +1,96 @@
+.column2 {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 25px;
+  background-color: #ecf0f1;
+  border-radius: 0px 20px 0px 0px;
+}
+
+.column2 button {
+  background-color: #3498db;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #ecf0f1;
+  border-radius: 20px;
+}
+.column2 button:hover {
+  background-color: #3498dbe0;
+}
+
+.column2 .nav-box {
+  margin: 10px 0;
+  display: flex;
+  /* border: 2px solid black; */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.column2 .nav-box .row {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column2 .nav-box .row .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+
+  width: 100%;
+}
+.column2 .nav-box .row:first-child {
+  border-right: 2px solid #ecf0f1;
+}
+.column2 .nav-box .row .box .remairing-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.column2 .nav-box .row .box .remairing-time span {
+  font-weight: 600;
+}
+.column2 .nav-box .row .box .heading {
+  font-weight: 700;
+  /* border-bottom: 2px solid black; */
+  width: 100%;
+  text-align: center;
+  background-color: #91ff0077;
+}
+.column2 .nav-box .row .box {
+  background-color: #00b32d81;
+}
+
+.column2 .answered table {
+  display: block;
+  columns: 2;
+}
+.column2 .answered table {
+  border-collapse: collapse;
+}
+.column2 .answered tbody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.column2 .answered tr {
+  display: flex;
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.column2 .nav-control {
+  display: flex;
+  width: 100%;
+}
+.column2 .nav-control button {
+  flex: 1;
+  margin: 10px 3px;
+}
