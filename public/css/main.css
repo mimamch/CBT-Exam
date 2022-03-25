@@ -38,6 +38,7 @@ body .cr a {
   /* justify-content: center;
   align-items: center; */
   /* width: 100%; */
+  margin-top: 10px;
 }
 
 .column2 {
@@ -61,6 +62,7 @@ body .cr a {
 
 .header .left {
   text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .header .right {

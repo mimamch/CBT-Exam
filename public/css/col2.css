@@ -1,7 +1,7 @@
 .column2 {
   display: flex;
   flex-direction: column;
-  padding: 30px 25px;
+  padding: 10px 25px;
   background-color: #ecf0f1;
   border-radius: 0px 20px 20px 0px;
 }
@@ -18,6 +18,19 @@
 }
 .column2 button:hover {
   background-color: #3498dbe0;
+}
+.column2 .font-btn {
+  display: flex;
+  margin-bottom: 10px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.column2 .font-btn button {
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background-color: #0e4a4d77;
+  /* color: rgb(2, 112, 255); */
 }
 
 .column2 .nav-box {
