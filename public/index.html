@@ -168,8 +168,8 @@
           </table>
         </div>
         <div class="nav-control">
-          <button>PREV</button>
-          <button>NEXT</button>
+          <button class="nav-btn" data-button="prev">PREV</button>
+          <button class="nav-btn" data-button="next">NEXT</button>
         </div>
       </div>
     </div>
@@ -178,5 +178,23 @@
       <a target="_blank" href="https://facebook.com/mimamch28">mimamch</a> 2022.
       All Right Reserved
     </h5>
+
+    <script>
+      const navBtn = document.querySelectorAll(".nav-btn");
+
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+      let value = params.page;
+      if (!value) value = 1;
+
+      navBtn.forEach((n) => {
+        n.addEventListener("click", (e) => {
+          if (n.dataset.button == "next") {
+            window.location.href = `?page=${parseInt(value) + 1}`;
+          }
+        });
+      });
+    </script>
   </body>
 </html>
