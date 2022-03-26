@@ -95,8 +95,12 @@
   display: flex;
   border-bottom: 1px solid black;
   width: 100%;
-  margin: 5px 0;
-  padding: 5px;
+  margin: 0px 0;
+  padding: 2px 5px;
+}
+
+.column2 .answered tr:last-child {
+  font-weight: 500;
 }
 
 .column2 .nav-control {

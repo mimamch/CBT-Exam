@@ -5,7 +5,7 @@
   border-radius: 20px 0px 0px 20px;
 }
 .column1 .noSoal {
-  font-size: 1.7em;
+  font-size: 2em;
   font-weight: 600;
   /* background-color: #3498db; */
   border-radius: 50%;
@@ -95,4 +95,9 @@
   height: 8px;
   border-radius: 50%;
   background: white;
+}
+
+.column1 {
+  display: flex;
+  gap: 10px;
 }
