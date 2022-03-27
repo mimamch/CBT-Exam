@@ -6,19 +6,15 @@ include('../components/topbar/index.ejs') %>
   <!-- Page Heading -->
 
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Data Soal</h1>
+    <h1 class="h3 mb-0 text-gray-800">
+      Data Soal <%= materiSoal.materiSoal %>
+    </h1>
   </div>
 
   <!-- Content Row -->
 
   <!-- TABLES -->
   <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <a class="btn btn-primary" href="soal/tambah"
-        ><i class="fas fa-plus-circle"></i> Tambah Baru</a
-      >
-    </div>
-
     <div class="card-body">
       <div class="table-responsive">
         <table
@@ -30,24 +26,23 @@ include('../components/topbar/index.ejs') %>
           <thead>
             <tr>
               <th>No.</th>
-              <th>Materi Soal</th>
+              <th>Tipe Soal</th>
+              <th>Right Option</th>
               <th>Action</th>
             </tr>
           </thead>
 
           <tbody>
-            <% soal.forEach((e, i) =>{ %>
+            <% dataSoal.forEach((e, i)=>{ %>
             <tr>
-              <td><%= i + 1 %></td>
-              <td><%= e.materiSoal %></td>
+              <td><%= e.nomorSoal %></td>
+              <td><%= e.tipeSoal %></td>
+              <td><%= e.jawabanBenar %></td>
               <td>
                 <a
-                  class="btn btn-success btn-sm"
-                  href="soal/detail/<%= e._id %> "
-                  ><i class="fas fa-info-circle"></i> Detail</a
-                >
-                <a class="btn btn-danger btn-sm" href="soal/delete/<%= e._id %>"
-                  ><i class="fas fa-trash"></i> Hapus</a
+                  class="btn btn-warning btn-sm"
+                  href="/admin/soal/<%= e._id %>/detail"
+                  >Details</a
                 >
               </td>
             </tr>

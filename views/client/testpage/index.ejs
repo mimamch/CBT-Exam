@@ -11,9 +11,9 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/col1.css" />
-    <link rel="stylesheet" href="css/col2.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/col1.css" />
+    <link rel="stylesheet" href="/css/col2.css" />
   </head>
   <body>
     <div class="header">
@@ -30,39 +30,64 @@
     <div class="container">
       <div class="column1">
         <div class="col1">
-          <span class="noSoal">1.</span>
+          <span class="noSoal"><%= dataSoal.nomorSoal %> </span>
         </div>
         <div class="soal">
           <div class="soal-wrapper">
-            <p>다음 단어와 관계있는 것은 고르십시</p>
-            <p>무, 배추, 양념, 고춧가루, 소금</p>
+            <div class="soal-text"><%= dataSoal.soal %></div>
+            <div class="file">
+              <!-- prettier-ignore -->
+              <% if(dataSoal.path){ const getName = dataSoal.path.split('.')
+              const getExt = getName.pop(); 
+              const ext = getExt.toLowerCase()
+              if(ext == 'png' || ext == 'jpg' ||ext == 'jpeg'){ %>
+              <img class="file-img" src="/assets/soal/<%= dataSoal.path %>" />
+              <% } if(ext == 'mp3' || ext == 'm4a' ||ext == 'ogg' || ext ==
+              'wav'){%>
+              <button onclick="play(this)" class="play-btn">PLAY</button>
+              <audio id="audio">
+                <source
+                  src="/assets/soal/<%= dataSoal.path %>"
+                  type="audio/ogg"
+                />
+              </audio>
+              <small style="font-size: 0.5em"
+                >be carefull, only can played 2 Times</small
+              >
+
+              <% }} %>
+              <!-- prettier-ignore -->
+            </div>
           </div>
           <span class="jawaban-wrapper">
             <label for="a" class="jawaban">
               <input type="radio" name="jawaban" id="a" />
-              <label for="a">밥</label>
+              <label for="a"><%= dataSoal.option1 %></label>
               <span class="checkmark"></span>
             </label>
             <label for="b" class="jawaban">
               <input type="radio" name="jawaban" id="b" />
-              <label for="b">고기</label>
+              <label for="b"><%= dataSoal.option2 %></label>
               <span class="checkmark"></span>
             </label>
             <label for="c" class="jawaban">
               <input type="radio" name="jawaban" id="c" />
-              <label for="c">김치</label>
+              <label for="c"><%= dataSoal.option3 %></label>
               <span class="checkmark"></span>
             </label>
             <label for="d" class="jawaban">
               <input type="radio" name="jawaban" id="d" />
-              <label for="d">식초</label>
+              <label for="d"><%= dataSoal.option4 %></label>
               <span class="checkmark"></span>
             </label>
           </span>
         </div>
       </div>
       <div class="column2">
-        <div class="font-btn"><button>Aa +</button> <button>Aa -</button></div>
+        <div class="font-btn">
+          <button class="font-size-control" id="font-plus">Aa +</button>
+          <button class="font-size-control" id="font-min">Aa -</button>
+        </div>
         <button>SUBMIT ANSWER</button>
         <div class="nav-box">
           <div class="row">
@@ -168,33 +193,38 @@
           </table>
         </div>
         <div class="nav-control">
-          <button class="nav-btn" data-button="prev">PREV</button>
-          <button class="nav-btn" data-button="next">NEXT</button>
+          <button id="btn-prev" class="nav-btn" data-button="prev">PREV</button>
+          <button id="btn-next" class="nav-btn" data-button="next">NEXT</button>
         </div>
       </div>
     </div>
+
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
     <h5 class="cr">
       © Copyright
-      <a target="_blank" href="https://facebook.com/mimamch28">mimamch</a> 2022.
-      All Right Reserved
+      <a target="_blank" href="https://facebook.com/mimamch28">mimamch</a>
+      2022. All Right Reserved
     </h5>
-
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
+    <script src="/js/nav-test.js"></script>
     <script>
-      const navBtn = document.querySelectorAll(".nav-btn");
+      const audio = document.getElementById("audio");
+      let played = 0;
+      function play(e) {
+        if (played >= 2) {
+          e.disabled = true;
+        }
+        audio.play();
+        played = played + 1;
+      }
 
-      const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-      });
-      let value = params.page;
-      if (!value) value = 1;
-
-      navBtn.forEach((n) => {
-        n.addEventListener("click", (e) => {
-          if (n.dataset.button == "next") {
-            window.location.href = `?page=${parseInt(value) + 1}`;
-          }
+      const radio = document.querySelectorAll(".jawaban-wrapper input");
+      radio.forEach((e) => {
+        e.addEventListener("click", () => {
+          console.log(e);
         });
       });
+      console.log(document.querySelector('input[name="jawaban"]:checked'));
     </script>
   </body>
 </html>

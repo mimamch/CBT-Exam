@@ -17,8 +17,12 @@
             </button>
 
             <!-- Topbar Search -->
+            
+              
+               
+    
+              
            
-
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -84,6 +88,9 @@
               </li>
             </ul>
           </nav>
+          <% if(messages.info){ %>
+            <div class="alert alert-primary" role="alert"><%= messages.info %></div>
+            <% } %>
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->

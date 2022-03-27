@@ -1,0 +1,43 @@
+<%- include('../components/header/index.ejs') %> <%-
+include('../components/sidebar/index.ejs') %> <%-
+include('../components/topbar/index.ejs') %>
+<style>
+  .soal-container {
+    padding: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.37);
+    margin: 10px 0;
+  }
+</style>
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Tambah Soal</h1>
+  </div>
+
+  <!-- Content Row -->
+
+  <!-- TABLES -->
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <form action="" method="post">
+        <div class="form-group">
+          <label for="materiSoal">Judul Materi Soal</label>
+          <input
+            type="text"
+            class="form-control"
+            id="materiSoal"
+            name="materiSoal"
+            placeholder="Materi Soal"
+            autocomplete="off"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Content Row -->
+</div>
+
+<%- include('../components/footer/index.ejs') %>

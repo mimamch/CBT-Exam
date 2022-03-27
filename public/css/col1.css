@@ -26,6 +26,16 @@
   display: block;
 }
 
+.column1 .soal-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.column1 .soal-wrapper .soal-text {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Customize the label (the container) */
 .jawaban {
   display: block;

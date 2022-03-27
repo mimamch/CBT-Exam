@@ -1,0 +1,61 @@
+<%- include('../components/header/index.ejs') %> <%-
+include('../components/sidebar/index.ejs') %> <%-
+include('../components/topbar/index.ejs') %>
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Tambah User</h1>
+  </div>
+
+  <!-- Content Row -->
+
+  <!-- TABLES -->
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <form action="" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Enter Name"
+            autocomplete="off"
+            value="<%= user.name %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Enter Username"
+            autocomplete="off"
+            value="<%= user.username %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">New Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Password"
+            autocomplete="off"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Content Row -->
+</div>
+
+<%- include('../components/footer/index.ejs') %>

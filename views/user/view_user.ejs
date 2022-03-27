@@ -13,7 +13,7 @@ include('../components/topbar/index.ejs') %>
   <!-- TABLES -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <a class="btn btn-primary" href="/user/tambah"
+      <a class="btn btn-primary" href="/admin/user/tambah"
         ><i class="fas fa-plus-circle"></i> Tambah Baru</a
       >
     </div>
@@ -29,29 +29,25 @@ include('../components/topbar/index.ejs') %>
             <tr>
               <th>No.</th>
               <th>Nama</th>
-              <th>Alamat</th>
-              <th>Tanggal Lahir</th>
+              <th>Username</th>
               <th>Action</th>
             </tr>
           </thead>
 
           <tbody>
-            <% data.forEach(e =>{ %>
+            <% data.forEach((e,i) =>{ %>
             <tr>
-              <td><%= e.id %></td>
+              <td><%= i +1 %></td>
               <td>
-                <a href="/user/detail/id"
-                  ><%= `${e.name.firstname.toUpperCase()}
-                  ${e.name.lastname.toUpperCase()}` %>
-                </a>
+                <a href="user/detail/id/<%= e._id %>"><%= `${e.name}` %> </a>
               </td>
-              <td><%= e.address.city %></td>
-              <td>2011/01/25</td>
+
+              <td><%= e.username %></td>
               <td>
-                <a class="btn btn-warning btn-sm" href="/soal/ubah/id"
+                <a class="btn btn-warning btn-sm" href="user/ubah/<%= e._id %>"
                   ><i class="fas fa-edit"></i> Ubah</a
                 >
-                <a class="btn btn-danger btn-sm" href="/soal/hapus/id"
+                <a class="btn btn-danger btn-sm" href="user/delete/<%= e._id %>"
                   ><i class="fas fa-trash"></i> Hapus</a
                 >
               </td>

@@ -4,8 +4,10 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
 var logger = require("morgan");
-
 var app = express();
+var flash = require("express-flash");
+app.use(flash());
+require("dotenv").config();
 app.use(
   session({
     secret: "keyboard cat",
@@ -21,13 +23,8 @@ app.use(
   )
 );
 
-var dashboardRouter = require("./app/dashboard/routes");
-var userRouter = require("./app/user/routes");
-var soalRouter = require("./app/soal/routes");
-
-app.use("/", dashboardRouter);
-app.use("/user", userRouter);
-app.use("/soal", soalRouter);
+const adminRouter = require("./app/admin/routes");
+const clientRouter = require("./app/client/routes");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -39,7 +36,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/", indexRouter);
+app.use("/client", clientRouter);
+app.use("/admin", adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

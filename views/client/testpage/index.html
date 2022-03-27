@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/col1.css" />
+    <link rel="stylesheet" href="css/col2.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="left"><h3>Gidohae.com</h3></div>
+      <div class="right">
+        <div class="number test-number">Test Number : 001</div>
+        <div class="number">M Imam Ch</div>
+      </div>
+    </div>
+    <!-- <div class="toolbar">
+      <div class=""> </div>
+      <div class="font-btn"><button>Aa +</button> <button>Aa -</button></div>
+    </div> -->
+    <div class="container">
+      <div class="column1">
+        <div class="col1">
+          <span class="noSoal">1.</span>
+        </div>
+        <div class="soal">
+          <div class="soal-wrapper">
+            <p>다음 단어와 관계있는 것은 고르십시</p>
+            <p>무, 배추, 양념, 고춧가루, 소금</p>
+          </div>
+          <span class="jawaban-wrapper">
+            <label for="a" class="jawaban">
+              <input type="radio" name="jawaban" id="a" />
+              <label for="a">밥</label>
+              <span class="checkmark"></span>
+            </label>
+            <label for="b" class="jawaban">
+              <input type="radio" name="jawaban" id="b" />
+              <label for="b">고기</label>
+              <span class="checkmark"></span>
+            </label>
+            <label for="c" class="jawaban">
+              <input type="radio" name="jawaban" id="c" />
+              <label for="c">김치</label>
+              <span class="checkmark"></span>
+            </label>
+            <label for="d" class="jawaban">
+              <input type="radio" name="jawaban" id="d" />
+              <label for="d">식초</label>
+              <span class="checkmark"></span>
+            </label>
+          </span>
+        </div>
+      </div>
+      <div class="column2">
+        <div class="font-btn">
+          <button class="font-size-control" id="font-plus">Aa +</button>
+          <button class="font-size-control" id="font-min">Aa -</button>
+        </div>
+        <button>SUBMIT ANSWER</button>
+        <div class="nav-box">
+          <div class="row">
+            <div class="reading-box box">
+              <div class="heading">Reading (25 min)</div>
+              <div class="remairing-time">time left <span>25:00</span></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="listening-box box">
+              <div class="heading">listening (25 min)</div>
+              <div class="remairing-time">time left <span>25:00</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOAL DI ISI -->
+
+        <div class="answered">
+          <table>
+            <tbody>
+              <tr>
+                <th>1.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>2.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>3.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>4.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>5.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>6.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>7.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>8.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>9.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>10.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>11.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>12.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>13.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>14.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>15.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>16.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>17.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>18.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>19.</th>
+                <td>✓</td>
+              </tr>
+              <tr>
+                <th>20.</th>
+                <td>✓</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nav-control">
+          <button id="btn-prev" class="nav-btn" data-button="prev">PREV</button>
+          <button id="btn-next" class="nav-btn" data-button="next">NEXT</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
+    <h5 class="cr">
+      © Copyright
+      <a target="_blank" href="https://facebook.com/mimamch28">mimamch</a>
+      2022. All Right Reserved
+    </h5>
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
+    <script src="js/nav-test.js"></script>
+  </body>
+</html>
