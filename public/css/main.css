@@ -124,3 +124,11 @@ body .cr a {
   font-weight: 500;
   cursor: pointer;
 }
+
+.tipe-test {
+  font-size: 1.3em;
+  font-weight: 600;
+  text-align: center;
+  background-color: #3498db;
+  color: #ecf0f1;
+}
