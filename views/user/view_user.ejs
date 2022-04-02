@@ -30,6 +30,7 @@ include('../components/topbar/index.ejs') %>
               <th>No.</th>
               <th>Nama</th>
               <th>Username</th>
+              <th>Role</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -43,6 +44,7 @@ include('../components/topbar/index.ejs') %>
               </td>
 
               <td><%= e.username %></td>
+              <td><%= e.role %></td>
               <td>
                 <a class="btn btn-warning btn-sm" href="user/ubah/<%= e._id %>"
                   ><i class="fas fa-edit"></i> Ubah</a

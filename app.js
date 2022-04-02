@@ -6,6 +6,7 @@ var session = require("express-session");
 var logger = require("morgan");
 var app = express();
 var flash = require("express-flash");
+var cors = require("cors");
 app.use(flash());
 require("dotenv").config();
 app.use(
@@ -13,6 +14,7 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
+    cookie: { maxAge: 60000 * 60 * 24 * 7 },
   })
 );
 
@@ -23,9 +25,17 @@ app.use(
   )
 );
 
+app.use(cors());
+
+const mongoose = require("mongoose");
+const mongoURL = process.env.MONGO_URL;
+mongoose.connect(mongoURL);
+
 const adminRouter = require("./app/admin/routes");
 const clientRouter = require("./app/client/routes");
-
+const api = require("./app/api/soal/routes");
+const auth = require("./app/auth/routes");
+const { middleware, logOut } = require("./app/auth/controller/middleware");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -36,13 +46,35 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/client", clientRouter);
-app.use("/admin", adminRouter);
+app.use("/", auth);
+app.use("/logout", logOut);
+app.use(
+  "/client",
+  middleware,
+  function (req, res, next) {
+    res.locals.user = req.session.user;
+    next();
+  },
+  clientRouter
+);
+app.use(
+  "/admin",
+  middleware,
+  function (req, res, next) {
+    res.locals.user = req.session.user;
+    next();
+  },
+  adminRouter
+);
+app.use("/api/v1", api);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  res.status(404).render("404");
-  // next(createError(404));
+  if (req.session.user.role == "admmin") {
+    res.status(404).render("404");
+  } else {
+    next(createError(404));
+  }
 });
 
 // error handler

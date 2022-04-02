@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const mongoURL = process.env.MONGO_URL;
-mongoose.connect(mongoURL);
 
 const idSoalSchema = new Schema(
   {
@@ -19,6 +17,7 @@ const soalSchema = new Schema({
   option2: String,
   option3: String,
   option4: String,
+  isOptionPicture: { type: Boolean, default: false },
   jawabanBenar: String,
   tipeSoal: {
     type: String,

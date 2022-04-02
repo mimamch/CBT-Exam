@@ -132,3 +132,6 @@ body .cr a {
   background-color: #3498db;
   color: #ecf0f1;
 }
+.optionpicture {
+  max-height: 130px;
+}

@@ -1,0 +1,57 @@
+<%- include('../components/header/index.ejs') %> <%-
+include('../components/sidebar/index.ejs') %> <%-
+include('../components/topbar/index.ejs') %>
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">History User Test</h1>
+  </div>
+
+  <!-- Content Row -->
+
+  <!-- TABLES -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3"></div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Username</th>
+              <th>Nilai</th>
+              <th>Jawaban Benar</th>
+              <th>Materi</th>
+              <th>Keputusan</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% history.forEach((e, i) =>{ %>
+            <tr>
+              <td><%= i +1 %></td>
+              <td><%= e.UID.username %></td>
+              <td><%= e.nilai %></td>
+              <td><%= e.jawabanBenar.length %></td>
+              <td><%= e.MID.materiSoal %></td>
+              <td><%= e.nilai >= 175 ? 'Lulus' : 'Tidak Lulus' %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Row -->
+</div>
+
+<%- include('../components/footer/index.ejs') %>

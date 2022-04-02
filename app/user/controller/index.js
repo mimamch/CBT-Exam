@@ -18,10 +18,10 @@ module.exports = {
   },
   ActionTambahUser: async (req, res) => {
     try {
-      const { name, username, password } = req.body;
+      const { name, username, password, role } = req.body;
       const hashPass = bcrypt.hashSync(password, 10);
-      const newUser = new User({ name, username, password: hashPass });
-      newUser.save();
+      const newUser = new User({ name, username, password: hashPass, role });
+      await newUser.save();
       req.flash("info", "Berhasil Tambah User");
       res.redirect("/admin/user");
     } catch (error) {

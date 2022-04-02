@@ -39,6 +39,21 @@ include('../components/topbar/index.ejs') %>
           />
         </div>
         <div class="form-group">
+          <label for="role">Role</label>
+          <select
+            type="role"
+            class="form-control"
+            id="role"
+            name="role"
+            placeholder="role"
+            autocomplete="off"
+            required
+          >
+            <option value="client">Client</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="password">New Password</label>
           <input
             type="password"

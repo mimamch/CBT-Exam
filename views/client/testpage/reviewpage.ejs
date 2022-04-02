@@ -1,0 +1,272 @@
+<%- include('../components/header.ejs') %> 
+  <body>
+    <style>
+      .score{
+        background-color: #3498db;
+        padding: 5px 10px;
+        color: rgb(240, 233, 233);
+        border-radius: 10px;
+      }
+    </style>
+    <div class="header">
+      <div class="left"><h3>Gidohae.com</h3></div>
+      <div class="right">
+        <div class="number test-number">Test ID : <%= TID %></div>
+        <div class="number">M Imam Ch</div>
+      </div>
+    </div>
+    <!-- <div class="toolbar">
+      <div class=""> </div>
+      <div class="font-btn"><button>Aa +</button> <button>Aa -</button></div>
+    </div> -->
+    <div class="container">
+      <div class="column1">
+        <div class="col1">
+          <span class="noSoal"><%= dataSoal.nomorSoal %> </span>
+        </div>
+        <div class="soal">
+          
+          <div class="soal-wrapper">
+            <div class="soal-text"><%- dataSoal.soal %></div>
+            <div class="file">
+              <!-- prettier-ignore -->
+              <% if(dataSoal.path){ const getName = dataSoal.path.split('.')
+              const getExt = getName.pop(); 
+              const ext = getExt.toLowerCase()
+              if(ext == 'png' || ext == 'jpg' ||ext == 'jpeg'){ %>
+              <img class="file-img" src="/assets/soal/<%= dataSoal.path %>" />
+              <% } if(ext == 'mp3' || ext == 'm4a' ||ext == 'ogg' || ext ==
+              'wav'){%>
+              <button onclick="play(this)" class="play-btn">PLAY</button>
+              <audio id="audio">
+                <source
+                  src="/assets/soal/<%= dataSoal.path %>"
+                  type="audio/ogg"
+                />
+              </audio>
+              <small style="font-size: 0.5em"
+                >be carefull, only can played 2 Times</small
+              >
+
+              <% }} %>
+              <!-- prettier-ignore -->
+            </div>
+          </div>
+          <span class="jawaban-wrapper">
+            <label for="1" class="jawaban">
+              <input type="radio" name="jawaban" id="1" />
+              <label for="1"
+                ><% if(dataSoal.isOptionPicture){%>
+                <img
+                  class="optionpicture"
+                  src="/assets/soal/<%= dataSoal.option1 %>"
+                  alt="option"
+                />
+                <% }else{ %> <%= dataSoal.option1 %> <%}%> 
+                <% if(dataSoal.jawabanBenar == '1'){ %>
+              RIGHT ANSWER
+              <% } %>
+              </label>
+              <span class="checkmark"></span>
+            </label>
+            <label for="2" class="jawaban">
+              <input type="radio" name="jawaban" id="2" />
+              <label for="2"
+                ><% if(dataSoal.isOptionPicture){%>
+                <img
+                  class="optionpicture"
+                  src="/assets/soal/<%= dataSoal.option2 %>"
+                  alt="option"
+                />
+                <% }else{ %> <%= dataSoal.option2 %> <%}%> 
+                <% if(dataSoal.jawabanBenar == '2'){ %>
+              RIGHT ANSWER
+              <% } %>
+                </label
+              >
+              <span class="checkmark"></span> 
+            </label>
+            
+            <label for="3" class="jawaban">
+              <input type="radio" name="jawaban" id="3" />
+              <label for="3"
+                ><% if(dataSoal.isOptionPicture){%>
+                <img
+                  class="optionpicture"
+                  src="/assets/soal/<%= dataSoal.option3 %>"
+                  alt="option"
+                />
+                <% }else{ %> <%= dataSoal.option3 %> <%}%> <% if(dataSoal.jawabanBenar == '3'){ %>
+              -RIGHT ANSWER
+              <% } %></label
+              >
+              <span class="checkmark"></span>
+            </label>
+            <label for="4" class="jawaban">
+              <input type="radio" name="jawaban" id="4" />
+              <label for="4"
+                ><% if(dataSoal.isOptionPicture){%>
+                <img
+                  class="optionpicture"
+                  src="/assets/soal/<%= dataSoal.option4 %>"
+                  alt="option"
+                />
+                <% }else{ %> <%= dataSoal.option4 %> <%}%> <% if(dataSoal.jawabanBenar == '4'){ %>
+              -RIGHT ANSWER
+              <% } %></label
+              >
+              <span class="checkmark"></span>
+            </label>
+          </span>
+
+        </div>
+        
+      </div>
+      <div class="column2">
+        <div class="font-btn">
+          <button class="font-size-control" id="font-plus">Aa +</button>
+          <button class="font-size-control" id="font-min">Aa -</button>
+        </div>
+        <button style="display: none;" onclick="backToClient()" id="backToClient">BACK TO DASHBOARD</button>
+        <div class="nav-box">
+          <div class="row">
+            <div class="reading-box box">
+              <div class="heading">Reading (25 min)</div>
+              <div class="remairing-time">time left <span>25:00</span></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="listening-box box">
+              <div class="heading">listening (25 min)</div>
+              <div class="remairing-time">time left <span>25:00</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOAL DI ISI -->
+
+        <div class="answered">
+          <div id="tipe-test" class="tipe-test">READING</div>
+          <table>
+            <tbody>
+              <tr>
+                <th>1.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>2.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>3.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>4.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>5.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>6.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>7.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>8.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>9.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>10.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>11.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>12.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>13.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>14.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>15.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>16.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>17.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>18.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>19.</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>20.</th>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nav-control">
+          <button id="btn-prev" class="nav-btn" data-button="prev">PREV</button>
+          <button id="btn-next" class="nav-btn" data-button="next">NEXT</button>
+        </div>
+        <div class="score">
+          <p><%= history.nilai >= 175 ? 'You Are Pass This Test' : 'You Are Fail' %></p>
+          <p>Your Score : <%= history.nilai %>/200</p>
+          <p>Right Questions : <%= history.jawabanBenar.length %></p>
+          </div>
+      </div>
+    </div>
+
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
+    <h5 class="cr">
+      © Copyright
+      <a target="_blank" href="https://facebook.com/mimamch28">mimamch</a>
+      2022. All Right Reserved
+    </h5>
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
+    <script>
+      let uid = "<%= UID %>"
+      let tid = "<%= TID %>"
+      let mid = "<%= MID %>"
+
+      let inputRadio = document.querySelectorAll(".jawaban input")
+      inputRadio.forEach(e => e.disabled = true)
+function backToClient(){
+  window.location = '/client'
+}
+
+    </script>
+    <script src="/js/audio.js"></script>
+    <script src="/js/declareReview.js"></script>
+    <script src="/js/nav-test-review.js"></script>
+    <script src="/js/savetoken.js"></script>
+    <script src="/js/checktoken.js"></script>
+  </body>
+</html>

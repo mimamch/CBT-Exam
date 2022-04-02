@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/col1.css" />
-    <link rel="stylesheet" href="/css/col2.css" />
-  </head>
+<%- include('../components/header.ejs') %> 
   <body>
     <div class="header">
       <div class="left"><h3>Gidohae.com</h3></div>
@@ -35,7 +18,7 @@
         </div>
         <div class="soal">
           <div class="soal-wrapper">
-            <div class="soal-text"><%= dataSoal.soal %></div>
+            <div class="soal-text"><%- dataSoal.soal %></div>
             <div class="file">
               <!-- prettier-ignore -->
               <% if(dataSoal.path){ const getName = dataSoal.path.split('.')
@@ -61,24 +44,56 @@
             </div>
           </div>
           <span class="jawaban-wrapper">
-            <label for="a" class="jawaban">
-              <input type="radio" name="jawaban" id="a" />
-              <label for="a"><%= dataSoal.option1 %></label>
+            <label for="1" class="jawaban">
+              <input type="radio" name="jawaban" id="1" />
+              <label for="1"
+                ><% if(dataSoal.isOptionPicture){%>
+                <img
+                  class="optionpicture"
+                  src="/assets/soal/<%= dataSoal.option1 %>"
+                  alt="option"
+                />
+                <% }else{ %> <%= dataSoal.option1 %> <%}%>
+              </label>
               <span class="checkmark"></span>
             </label>
-            <label for="b" class="jawaban">
-              <input type="radio" name="jawaban" id="b" />
-              <label for="b"><%= dataSoal.option2 %></label>
+            <label for="2" class="jawaban">
+              <input type="radio" name="jawaban" id="2" />
+              <label for="2"
+                ><% if(dataSoal.isOptionPicture){%>
+                <img
+                  class="optionpicture"
+                  src="/assets/soal/<%= dataSoal.option2 %>"
+                  alt="option"
+                />
+                <% }else{ %> <%= dataSoal.option2 %> <%}%></label
+              >
               <span class="checkmark"></span>
             </label>
-            <label for="c" class="jawaban">
-              <input type="radio" name="jawaban" id="c" />
-              <label for="c"><%= dataSoal.option3 %></label>
+            <label for="3" class="jawaban">
+              <input type="radio" name="jawaban" id="3" />
+              <label for="3"
+                ><% if(dataSoal.isOptionPicture){%>
+                <img
+                  class="optionpicture"
+                  src="/assets/soal/<%= dataSoal.option3 %>"
+                  alt="option"
+                />
+                <% }else{ %> <%= dataSoal.option3 %> <%}%></label
+              >
               <span class="checkmark"></span>
             </label>
-            <label for="d" class="jawaban">
-              <input type="radio" name="jawaban" id="d" />
-              <label for="d"><%= dataSoal.option4 %></label>
+            <label for="4" class="jawaban">
+              <input type="radio" name="jawaban" id="4" />
+              <label for="4"
+                ><% if(dataSoal.isOptionPicture){%>
+                <img
+                  class="optionpicture"
+                  src="/assets/soal/<%= dataSoal.option4 %>"
+                  alt="option"
+                />
+                <% }else{ %> <%= dataSoal.option4 %> <%}%></label
+              >
               <span class="checkmark"></span>
             </label>
           </span>
@@ -108,20 +123,20 @@
         <!-- SOAL DI ISI -->
 
         <div class="answered">
-          <div class="tipe-test">READING</div>
+          <div id="tipe-test" class="tipe-test">READING</div>
           <table>
             <tbody>
               <tr>
                 <th>1.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>2.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>3.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>4.</th>
@@ -129,7 +144,7 @@
               </tr>
               <tr>
                 <th>5.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>6.</th>
@@ -149,47 +164,47 @@
               </tr>
               <tr>
                 <th>10.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>11.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>12.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>13.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>14.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>15.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>16.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>17.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>18.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>19.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
               <tr>
                 <th>20.</th>
-                <td>✓</td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -209,19 +224,7 @@
     </h5>
     <!-- DANGER - DONT CHANGE COPYRIGHT -->
 
-    <script>
-      const audio = document.getElementById("audio");
-      let played = 0;
-      function play(e) {
-        if (played >= 2) {
-          e.disabled = true;
-        }
-        audio.play();
-        played = played + 1;
-      }
-
-      // console.log(document.querySelector('input[name="jawaban"]:checked'));
-    </script>
+    <script src="/js/audio.js"></script>
     <script src="/js/declare.js"></script>
     <script src="/js/nav-test.js"></script>
     <script src="/js/savetoken.js"></script>

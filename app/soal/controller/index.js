@@ -59,18 +59,27 @@ module.exports = {
           tipeSoal: tipeSoal,
         });
       }
-      if (req.file) {
+      if (req.files) {
         const sendSoal = new Soal({
           idSoal: req.params.idMateri,
           nomorSoal: nomorSoal,
           soal: req.body.soal,
-          path: req.file.filename,
-          option1: req.body.option1,
-          option2: req.body.option2,
-          option3: req.body.option3,
-          option4: req.body.option4,
+          path: req.files.file ? req.files.file[0].filename : null,
+          option1: req.files.optionpicture
+            ? req.files.optionpicture[0].filename
+            : req.body.option1,
+          option2: req.files.optionpicture
+            ? req.files.optionpicture[1].filename
+            : req.body.option2,
+          option3: req.files.optionpicture
+            ? req.files.optionpicture[2].filename
+            : req.body.option3,
+          option4: req.files.optionpicture
+            ? req.files.optionpicture[3].filename
+            : req.body.option4,
           jawabanBenar: req.body.jawabanBenar,
           tipeSoal: tipeSoal,
+          isOptionPicture: req.files.optionpicture ? true : false,
         });
         sendSoal.save((err, data) => {
           if (err) console.log(err);
@@ -107,9 +116,81 @@ module.exports = {
         }/${tipeSoal}`
       );
     } catch (error) {
+      console.log(error);
       req.flash("info", error.message);
       res.redirect(`/admin/soal`);
     }
+
+    // try {
+    //   const nomorSoal = req.params.noSoal;
+    //   const idMateri = req.params.idMateri;
+    //   const tipeSoal = req.params.tipeSoal;
+    //   const duplicate = await Soal.find({
+    //     idSoal: idMateri,
+    //     nomorSoal: nomorSoal,
+    //     tipeSoal: tipeSoal,
+    //   });
+    //   if (duplicate.length != 0) {
+    //     if (duplicate[0].path) {
+    //       fs.unlinkSync(`./public/assets/soal/${duplicate[0].path}`);
+    //     }
+    //     await Soal.findOneAndDelete({
+    //       idSoal: idMateri,
+    //       nomorSoal: nomorSoal,
+    //       tipeSoal: tipeSoal,
+    //     });
+    //   }
+    //   if (req.file) {
+    //     const sendSoal = new Soal({
+    //       idSoal: req.params.idMateri,
+    //       nomorSoal: nomorSoal,
+    //       soal: req.body.soal,
+    //       path: req.file.filename,
+    //       option1: req.body.option1,
+    //       option2: req.body.option2,
+    //       option3: req.body.option3,
+    //       option4: req.body.option4,
+    //       jawabanBenar: req.body.jawabanBenar,
+    //       tipeSoal: tipeSoal,
+    //     });
+    //     sendSoal.save((err, data) => {
+    //       if (err) console.log(err);
+    //     });
+    //   } else {
+    //     const sendSoal = new Soal({
+    //       idSoal: req.params.idMateri,
+    //       nomorSoal: nomorSoal,
+    //       soal: req.body.soal,
+    //       option1: req.body.option1,
+    //       option2: req.body.option2,
+    //       option3: req.body.option3,
+    //       option4: req.body.option4,
+    //       jawabanBenar: req.body.jawabanBenar,
+    //       tipeSoal: tipeSoal,
+    //     });
+    //     sendSoal.save((err, data) => {
+    //       if (err) console.log(err);
+    //     });
+    //   }
+    //   if (tipeSoal == "reading" && nomorSoal >= 20) {
+    //     res.redirect(`/admin/soal/tambah/${req.params.idMateri}/1/listening`);
+    //     return;
+    //   }
+    //   if (tipeSoal == "listening" && nomorSoal >= 20) {
+    //     req.flash("info", "Berhasil Menambahkan Soal");
+    //     res.redirect(`/admin/soal`);
+    //     return;
+    //   }
+
+    //   res.redirect(
+    //     `/admin/soal/tambah/${req.params.idMateri}/${
+    //       parseInt(nomorSoal) + 1
+    //     }/${tipeSoal}`
+    //   );
+    // } catch (error) {
+    //   req.flash("info", error.message);
+    //   res.redirect(`/admin/soal`);
+    // }
   },
   actionDeleteSoal: async (req, res) => {
     try {

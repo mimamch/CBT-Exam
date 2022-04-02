@@ -1,0 +1,59 @@
+<%- include('../components/header.ejs') %> 
+<body>
+    <div class="header">
+      <div class="left"><h3>Gidohae.com</h3></div>
+      <div class="right">
+        <div class="number test-number"><%- user.username %></div>
+        <div class="number"> <%- user.name %>  </div>
+        <div class="number"><a style="color: inherit; text-decoration: none;" href="/logout"> LOG OUT</a></div>
+      </div>
+    </div>
+    <!-- <div class="toolbar">
+      <div class=""> </div>
+      <div class="font-btn"><button>Aa +</button> <button>Aa -</button></div>
+    </div> -->
+    <div class="container">
+        <div class="column1">
+     <div class="tutorial-wrapper">
+         <h1>고 용 허 가 제 한 국 어 능 력 시 험</h2>
+            <h3>문항수 : 40 문항 / 시험시간 : 50 분</h3>
+            <h3>Number of questions : 40 question / test time : 50 minutes </h3>
+            <div class="tutorial-box">
+                <h3>~ 유 의 사 항 ~ </h3>
+                <hr>
+            <p>시험시작 지시가 있을 때까지 이 문제지시를 펴지 마십시오.</p>
+            <p>Please do not open the booket until instructed to do.</p>
+            <hr>
+            <p>각 폐이지의 형별, 문항수 및 인쇠상태를 확인하시고 이상이</p>
+            <p>있을 시 감독위원에게 말씀하여 주십시오.</p>
+            <p>Please check type, number of questions and print condition of each page and if there is any problem, repor it to proctors imediately.</p>
+            <hr>
+            <p>응시번호와 성명을 문제지와 답안지에 기제하여야 합니다.</p>
+            <p>You should write and aplication number and name on the test paper sheet and the answer sheet</p>
+
+            </div>
+            <form action="/client/start/<%= MID %>" method="get">
+                <!-- <input type="text" style="display: none;" name="MID" value="<%= MID %>"> -->
+            <button type="submit" href=" " class="ok-btn">START TEST</button>
+        </form>
+     </div>
+      </div>
+    </div>
+    
+    </div>
+
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
+    <h5 class="cr">
+      © Copyright
+      <a target="_blank" href="https://facebook.com/mimamch28">mimamch</a>
+      2022. All Right Reserved
+    </h5>
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
+
+    
+    
+   <script>
+       localStorage.clear()
+   </script>
+  </body>
+</html>

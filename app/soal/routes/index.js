@@ -33,7 +33,10 @@ router.post("/tambah", actionTambahMateriSoal);
 router.get("/tambah/:idMateri/:noSoal/:tipeSoal", viewTambahDetailSoal);
 router.post(
   "/tambah/:idMateri/:noSoal/:tipeSoal",
-  upload.single("file"),
+  upload.fields([
+    { name: "file", maxCount: 1 },
+    { name: "optionpicture", maxCount: 4 },
+  ]),
   actionTambahDetailSoal
 );
 router.get("/delete/:idMateri", actionDeleteSoal);
