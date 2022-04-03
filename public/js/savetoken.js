@@ -25,15 +25,25 @@ Object.entries(localStorage).map(([key, value]) => {
     jawabanTerisi.push({ [key]: JSON.parse(value).jawaban });
 });
 
-let tableFilled = document.querySelectorAll(".answered table tbody tr td");
+let readingTable = document.querySelectorAll(
+  ".answered table.reading tbody tr td"
+);
+let listeningTable = document.querySelectorAll(
+  ".answered table.listening tbody tr td"
+);
 
 jawabanTerisi.forEach((e) => {
   Object.entries(e).map(([key, value]) => {
     let [tipee, testId, userId, soalNumber, mid] = key.split(".");
 
-    if (tipee == tipe) {
-      tableFilled[soalNumber - 1].textContent = "COMPLETE";
+    if (tipee == "reading") {
+      readingTable[soalNumber - 1].textContent = "COMPLETE";
+    } else if (tipe == "listening") {
+      listeningTable[soalNumber - 1].textContent = "COMPLETE";
     }
+    // if (tipee == tipe) {
+    //   tableFilled()[soalNumber - 1].textContent = "COMPLETE";
+    // }
   });
 });
 // console.log(jawabanTerisi);

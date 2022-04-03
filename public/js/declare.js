@@ -104,8 +104,8 @@ function reading(time) {
   }, 1000);
 }
 
-if (tipe == "reading") reading(60000 * 25);
-if (tipe == "listening") listening(60000 * 25);
+if (tipe == "reading") reading(60 * 25);
+if (tipe == "listening") listening(60 * 25);
 
 function sendData(data) {
   // console.log(data);

@@ -81,7 +81,12 @@
 
 .column2 .answered table {
   display: block;
-  columns: 2;
+  /* columns: 2; */
+  flex: 1;
+}
+.column2 .answered .tabel-wrapper {
+  display: flex;
+  width: 100%;
 }
 .column2 .answered table {
   border-collapse: collapse;
