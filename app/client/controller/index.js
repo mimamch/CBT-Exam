@@ -127,6 +127,19 @@ module.exports = {
         MID: idMateri,
         history,
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  statusKelulusan: async (req, res) => {
+    const TID = req.params.TID;
+    const history = await HistoryTest.findOne({ TID: req.params.TID });
+    let isLulus;
+    if (history.nilai >= 175) {
+      isLulus = true;
+    } else {
+      isLulus = false;
+    }
+    res.render("client/testpage/kelulusan", { TID, isLulus, history });
   },
 };

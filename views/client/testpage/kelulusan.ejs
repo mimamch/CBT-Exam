@@ -1,0 +1,89 @@
+<%- include('../components/header.ejs') %> 
+  <body>
+    <style>
+      .score{
+        background-color: #3498db;
+        padding: 5px 10px;
+        color: rgb(240, 233, 233);
+        border-radius: 10px;
+      }
+      .lulus-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        text-align: center;
+        flex-direction: column;
+      }
+      .lulus-wrapper h1{
+          font-size: 3em;
+          text-decoration: underline;
+      }
+      .lulus-wrapper p{
+          font-size: 2em;
+          font-weight: 500;
+      }
+      .lulus-wrapper a{
+          width: 200px;
+          background-color: #3498db;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 2em;
+          color: rgb(231, 226, 226);
+          text-decoration: none;
+      }
+    </style>
+    <div class="header">
+      <div class="left"><h3>Gidohae.com</h3></div>
+      <div class="right">
+        <div class="number test-number">Test ID : <%= TID %></div>
+        <div class="number">M Imam Ch</div>
+      </div>
+    </div>
+    <!-- <div class="toolbar">
+      <div class=""> </div>
+      <div class="font-btn"><button>Aa +</button> <button>Aa -</button></div>
+    </div> -->
+    <div class="container">
+      <div class="column1">
+<div class="lulus-wrapper">
+    <%if(isLulus){ %>
+
+        <div class="lulus success">
+            <h1>CONRATULATIONS :)</h1>
+           <p> You Are Passed this Test</p>
+           <p> Score : <%= history.nilai %>/200 </p>
+        </div>
+
+   <% }else{ %>
+    <div class="lulus failed">
+        <h1>Sorry :(</h1>
+       <p> You Are Fail on this Test</p>
+       <p> Score : <%= history.nilai %>/200 </p>
+    </div>
+  <% } %>
+  <a href="/client/review/<%= TID %> "> NEXT </a>
+</div>
+       
+        
+        
+      </div>
+     
+    </div>
+
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
+    <h5 class="cr">
+      © Copyright
+      <a target="_blank" href="https://facebook.com/mimamch28">mimamch</a>
+      2022. All Right Reserved
+    </h5>
+    <!-- DANGER - DONT CHANGE COPYRIGHT -->
+    <script>
+    
+
+    </script>
+    
+  </body>
+</html>

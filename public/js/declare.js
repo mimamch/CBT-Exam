@@ -49,7 +49,8 @@ function listening(time) {
         // window.location.search = urlParams;
         sendData(jawabanTerisi);
         setTimeout(() => {
-          window.location = `/client/review/${TID}`;
+          // window.location = `/client/review/${TID}`;
+          window.location = `/client/statuskelulusan/${TID}`;
         }, 2000);
       }
     }
@@ -104,8 +105,8 @@ function reading(time) {
   }, 1000);
 }
 
-if (tipe == "reading") reading(60 * 25);
-if (tipe == "listening") listening(60 * 25);
+if (tipe == "reading") reading(60000 * 25);
+if (tipe == "listening") listening(60000 * 25);
 
 function sendData(data) {
   // console.log(data);
