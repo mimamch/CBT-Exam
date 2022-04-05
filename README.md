@@ -1,5 +1,5 @@
 # Gidohae CBT-Exam 
-## Gidohae is a company that runs in the field of Korean language education
+### Gidohae is a company that runs in the field of Korean language education
 
 # What's in this app?
 
@@ -14,6 +14,8 @@
 - History client test
 
 ## Feature
+- Easy maintenance with refactored code
+- Structured code writing
 - Reading Test with Image emmbeded
 - Listening Test with Audio Embedded
 - Answer with Image
