@@ -39,9 +39,7 @@ include('../components/topbar/index.ejs') %>
             <% data.forEach((e,i) =>{ %>
             <tr>
               <td><%= i +1 %></td>
-              <td>
-                <a href="user/detail/id/<%= e._id %>"><%= `${e.name}` %> </a>
-              </td>
+              <td><%= `${e.name}` %></td>
 
               <td><%= e.username %></td>
               <td><%= e.role %></td>

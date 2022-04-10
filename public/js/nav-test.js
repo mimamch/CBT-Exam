@@ -34,10 +34,6 @@ document.querySelectorAll(".font-size-control").forEach((c) => {
   });
 });
 
-const cr = document.querySelector(".cr a");
-("https://facebook.com/mimamch28" == cr.href && "mimamch" == cr.textContent) ||
-  (window.location = "https://facebook.com/mimamch28");
-
 // if (tipe == "listening") {
 //   document.getElementById("tipe-test").textContent = tipe.toUpperCase();
 // }

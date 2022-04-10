@@ -34,7 +34,7 @@ router.get("/tambah/:idMateri/:noSoal/:tipeSoal", viewTambahDetailSoal);
 router.post(
   "/tambah/:idMateri/:noSoal/:tipeSoal",
   upload.fields([
-    { name: "file", maxCount: 1 },
+    { name: "file", maxCount: 2 },
     { name: "optionpicture", maxCount: 4 },
   ]),
   actionTambahDetailSoal
@@ -42,6 +42,13 @@ router.post(
 router.get("/delete/:idMateri", actionDeleteSoal);
 router.get("/detail/:idMateri", viewDetailSoal);
 router.get("/:idSoal/detail", viewPerSoalDetail);
-router.post("/:idSoal/detail", upload.single("file"), actionPerSoalDetail);
+router.post(
+  "/:idSoal/detail",
+  upload.fields([
+    { name: "file", maxCount: 2 },
+    { name: "optionpicture", maxCount: 4 },
+  ]),
+  actionPerSoalDetail
+);
 
 module.exports = router;

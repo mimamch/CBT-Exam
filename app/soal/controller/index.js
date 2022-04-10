@@ -1,5 +1,7 @@
 const { Soal, idSoal } = require("../../models/soal");
 const fs = require("fs");
+const path = require("path");
+const publicPath = path.resolve("public");
 
 module.exports = {
   soal: async (req, res) => {
@@ -44,14 +46,16 @@ module.exports = {
       const nomorSoal = req.params.noSoal;
       const idMateri = req.params.idMateri;
       const tipeSoal = req.params.tipeSoal;
-      const duplicate = await Soal.find({
+      const duplicate = await Soal.findOne({
         idSoal: idMateri,
         nomorSoal: nomorSoal,
         tipeSoal: tipeSoal,
       });
-      if (duplicate.length != 0) {
-        if (duplicate[0].path) {
-          fs.unlinkSync(`./public/assets/soal/${duplicate[0].path}`);
+      if (duplicate) {
+        if (duplicate.path) {
+          duplicate.path.forEach((e) => {
+            fs.unlinkSync(path.join(publicPath, `assets/soal/${e}`));
+          });
         }
         await Soal.findOneAndDelete({
           idSoal: idMateri,
@@ -60,11 +64,15 @@ module.exports = {
         });
       }
       if (req.files) {
+        const pathSoal = [];
+        if (req.files.file) {
+          req.files.file.forEach((e) => pathSoal.push(e.filename));
+        }
         const sendSoal = new Soal({
           idSoal: req.params.idMateri,
           nomorSoal: nomorSoal,
           soal: req.body.soal,
-          path: req.files.file ? req.files.file[0].filename : null,
+          path: req.files.file ? pathSoal : null,
           option1: req.files.optionpicture
             ? req.files.optionpicture[0].filename
             : req.body.option1,
@@ -80,6 +88,7 @@ module.exports = {
           jawabanBenar: req.body.jawabanBenar,
           tipeSoal: tipeSoal,
           isOptionPicture: req.files.optionpicture ? true : false,
+          pembahasan: req.body.pembahasan,
         });
         sendSoal.save((err, data) => {
           if (err) console.log(err);
@@ -95,6 +104,7 @@ module.exports = {
           option4: req.body.option4,
           jawabanBenar: req.body.jawabanBenar,
           tipeSoal: tipeSoal,
+          pembahasan: req.body.pembahasan,
         });
         sendSoal.save((err, data) => {
           if (err) console.log(err);
@@ -195,9 +205,14 @@ module.exports = {
   actionDeleteSoal: async (req, res) => {
     try {
       const idMateri = req.params.idMateri;
-      const soal = await Soal.find({ idSoal: idMateri });
-      soal.forEach(async (e) => {
-        await Soal.findByIdAndDelete(e._id);
+      const soal = await Soal.find({ idSoal: idMateri }, "path");
+      soal.forEach(async (aa) => {
+        if (aa.path) {
+          aa.path.forEach(async (e) => {
+            fs.unlinkSync(path.join(publicPath, `assets/soal/${e}`));
+          });
+        }
+        await Soal.findByIdAndDelete(aa._id);
       });
       await idSoal.findByIdAndDelete(idMateri);
       req.flash("info", "Berhasil Menghapus Soal");
@@ -231,11 +246,19 @@ module.exports = {
   actionPerSoalDetail: async (req, res) => {
     try {
       const id = req.params.idSoal;
-      if (req.file) {
+      if (req.files) {
         const isFile = await Soal.findById(id, "path");
         if (isFile.path) {
-          fs.unlinkSync(`./public/assets/soal/${isFile.path}`);
+          isFile.path.forEach((e) => {
+            fs.unlinkSync(path.join(publicPath, `assets/soal/${e}`));
+          });
         }
+
+        const pathSoal = [];
+        if (req.files.file) {
+          req.files.file.forEach((e) => pathSoal.push(e.filename));
+        }
+
         const success = await Soal.findByIdAndUpdate(id, {
           soal: req.body.soal,
           option1: req.body.option1,
@@ -243,7 +266,8 @@ module.exports = {
           option3: req.body.option3,
           option4: req.body.option4,
           jawabanBenar: req.body.jawabanBenar,
-          path: req.file.filename,
+          path: pathSoal,
+          pembahasan: req.body.pembahasan,
         });
       } else {
         const success = await Soal.findByIdAndUpdate(id, {
@@ -253,6 +277,7 @@ module.exports = {
           option3: req.body.option3,
           option4: req.body.option4,
           jawabanBenar: req.body.jawabanBenar,
+          pembahasan: req.body.pembahasan,
         });
       }
       req.flash("info", "Berhasil Ubah");
