@@ -5,6 +5,13 @@ const { User } = require("../../models/user");
 module.exports = {
   viewLogin: async (req, res) => {
     try {
+      if (req.cookies.token || req.session.token) {
+        const token = jwt.verify(
+          req.cookies.token || req.session.token,
+          process.env.secretKey
+        );
+        if (token) return res.redirect(`/${token.role}`);
+      }
       res.render("login/view-login");
     } catch (error) {
       console.log(error);

@@ -14,7 +14,7 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 * 60 * 24 * 7 },
+    cookie: { secure: false, maxAge: 60000 * 60 * 24 * 7 },
   })
 );
 
@@ -70,7 +70,7 @@ app.use("/api/v1", api);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  if (req.session.user.role == "admmin") {
+  if (req.session.user.role == "admin") {
     res.status(404).render("404");
   } else {
     next(createError(404));
