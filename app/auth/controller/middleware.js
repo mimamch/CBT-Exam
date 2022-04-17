@@ -3,6 +3,10 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   middleware: async (req, res, next) => {
     try {
+      // CHECK IS LOGGED
+
+      //
+
       if (!req.session.token) {
         if (req.cookies.token) {
           req.session.token = req.cookies.token;
@@ -13,9 +17,12 @@ module.exports = {
       }
       if (req.session.token) {
         const token = jwt.verify(req.session.token, process.env.secretKey);
+        const url = req.baseUrl.replace("/", "");
+
+        if (token.role != url) return res.redirect(`/${token.role}`);
         if (token) {
           req.session.user = token;
-          next();
+          return next();
         } else {
           req.flash("info", "Session Ended, Please Login");
           res.redirect("/");
