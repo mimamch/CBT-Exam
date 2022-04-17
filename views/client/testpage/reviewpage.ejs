@@ -28,29 +28,37 @@
           
           <div class="soal-wrapper">
             <div class="soal-text"><%- dataSoal.soal %></div>
-            <div class="file">
-              <!-- prettier-ignore -->
-              <% if(dataSoal.path){ const getName = dataSoal.path.split('.')
+            <% if(dataSoal.path){ 
+              dataSoal.path.forEach(e =>{ %>
+                
+                  <%  const getName = e.split('.')
               const getExt = getName.pop(); 
               const ext = getExt.toLowerCase()
               if(ext == 'png' || ext == 'jpg' ||ext == 'jpeg'){ %>
-              <img class="file-img" src="/assets/soal/<%= dataSoal.path %>" />
-              <% } if(ext == 'mp3' || ext == 'm4a' ||ext == 'ogg' || ext ==
-              'wav'){%>
-              <button onclick="play(this)" class="play-btn">PLAY</button>
+                <div class="file">
+                  <h5>PICTURE</h5>
+                  <img class="file-img" src="/assets/soal/<%= e%>" />
+                  </div>
+               <% }else if(ext == 'mp3' || ext == 'm4a' ||ext == 'ogg' || ext ==
+              'wav'){ %>
+                <div class="file">
+                  <h5>AUDIO</h5>
+                <button onclick="play(this)" class="play-btn">PLAY</button>
               <audio id="audio">
                 <source
-                  src="/assets/soal/<%= dataSoal.path %>"
+                  src="/assets/soal/<%= e %>"
                   type="audio/ogg"
                 />
               </audio>
               <small style="font-size: 0.5em"
                 >be carefull, only can played 2 Times</small
               >
-
-              <% }} %>
-              <!-- prettier-ignore -->
             </div>
+             <% }%>
+              <% })
+            } %> 
+              <!-- prettier-ignore -->
+             
           </div>
           <span class="jawaban-wrapper">
             <label for="1" class="jawaban">
