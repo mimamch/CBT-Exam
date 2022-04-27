@@ -38,10 +38,10 @@ include('../components/topbar/index.ejs') %>
             <% history.forEach((e, i) =>{ %>
             <tr>
               <td><%= i +1 %></td>
-              <td><%= e.UID.username %></td>
+              <td><%= e.UID?.username %></td>
               <td><%= e.nilai %></td>
-              <td><%= e.jawabanBenar.length %></td>
-              <td><%= e.MID.materiSoal %></td>
+              <td><%= e.jawabanBenar?.length %></td>
+              <td><%= e.MID?.materiSoal %></td>
               <td><%= e.nilai >= 175 ? 'Lulus' : 'Tidak Lulus' %></td>
             </tr>
             <% }) %>

@@ -45,7 +45,7 @@ module.exports = {
               SN == e.nomorSoal &&
               value == e.jawabanBenar
             ) {
-              hasil.nilai += 20;
+              hasil.nilai += 5;
               hasil.jawabanBenar.push(`${tipe}.${SN}`);
             }
           });
